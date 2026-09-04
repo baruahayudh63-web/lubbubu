@@ -239,11 +239,19 @@
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU4enN6cmtxcXJia2R6MWd6eGZvaXNqM2RhMmVodGF4enZoaWdtMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Happy celebration">
       </div>
       <h1>I knew it! 🥰</h1>
-      <p class="sweet-message">love u too my cutulu,bubulu,sweetu ipshita</p>
+      <p class="sweet-message">love u too my cutulu,bubulu,sweetu <span id="recipientName"></span> ❤️✨</p>
     </div>
   </div>
 
   <script>
+    // Read dynamic recipient from URL query parameter (e.g. ?name=... or ?to=...) to protect PII in public source
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipientParam = urlParams.get('to') || urlParams.get('name') || '';
+    const recipientSpan = document.getElementById('recipientName');
+    if (recipientSpan) {
+      recipientSpan.textContent = recipientParam;
+    }
+
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
     const wrongText = document.getElementById('wrongText');
